@@ -37,7 +37,7 @@ spec:
         - "$(inputs.params.YAMLPATHTOIMAGE)"
         - "$(inputs.resources.image.url)"
     - name: run-kubectl
-      image: lachlanevenson/k8s-kubectl
+      image: quay.io/bigkevmcd/k8s-kubectl
       workingDir: /workspace/source
       command: ["kubectl"]
       args:
