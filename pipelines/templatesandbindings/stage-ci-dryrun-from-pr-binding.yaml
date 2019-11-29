@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: stage-ci-dryrun-from-pr-binding
+spec:
+  params:
+  - name: gitref
+    value: $(body.pull_request.head.ref)
+  - name: gitsha
+    value: $(body.pull_request.head.sha)
+  - name: gitrepositoryurl
+    value: $(body.repository.clone_url)

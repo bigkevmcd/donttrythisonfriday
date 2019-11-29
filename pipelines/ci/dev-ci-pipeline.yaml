@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: dev-ci-pipeline
+spec:
+  resources:
+    - name: source-repo
+      type: git
+    - name: runtime-image
+      type: image
+  tasks:
+    - name: build-image
+      taskRef:
+        name: buildah-task
+      resources:
+        inputs:
+          - name: source
+            resource: source-repo
+        outputs:
+          - name: image
+            resource: runtime-image
