@@ -4,8 +4,8 @@ oc apply -f https://github.com/tektoncd/triggers/releases/download/v0.1.0/releas
 oc new-project dev-environment
 oc new-project stage-environment
 oc new-project cicd-environment
-oc apply -f ~/PULL_SECRET_NAME.yaml
-oc create secret generic regcred --from-file=.dockerconfigjson=$HOME/DOCKER_CONFIG_NAME.json --type=kubernetes.io/dockerconfigjson
+oc apply -f $HOME/Downloads/PULL_SECRET_NAME.yml
+oc create secret generic regcred --from-file=.dockerconfigjson=$HOME/Downloads/DOCKER_CONFIG_NAME.json --type=kubernetes.io/dockerconfigjson
 oc apply -f serviceaccount
 oc adm policy add-scc-to-user privileged -z demo-sa
 oc adm policy add-role-to-user edit -z demo-sa
