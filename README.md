@@ -1,24 +1,53 @@
-# The Taxi App
+# Deploying the Taxi app
 
-## About
+This is a repository for deploying the demo Tekton GitHub integration app.
 
-This repository contains the source code, deployment manifests and CI/CD pipelines for the taxi application.
+## Requirements
 
-## Application Source code
+ * A Quay.io account that you can generate read/write credentials for.
+ * A pull-secret for the Docker image repository, if your repository is public, you may not need this, and may need to edit the files, see [Quay pull secrets](#quay-pull-secrets) below for how to do this for Quay.io.
+ * A Docker configuration to access your image host, if you're using Quay.io, see [Quay docker config](#quay-docker-config) for instructions.
+ * A running OpenShift cluster that can be exposed to the internet - and you must be logged in at the command-line.
 
-The application source code resides in the `src` directory.
+## Updating the configuration
 
-## Pipelines
+ ```shell
+ $ ./setup.sh <QUAYIO_USERNAME>
+ ```
 
-The [pipelines](../pipelines) that power the CI and CD jobs for this repository have been defined as Tekton Tasks & Tekton Pipeline definitions.
+## Bootstrapping the configuration
 
-### CI
+ ```shell
+ $ cd pipelines && ./bootstrap.sh
+ ```
 
-The CI pipeline does the following:
+At this point, a lot of YAML files and things will scroll down the screen, and
+it will take some time for new containers to be spawned.
 
-- Validates any changes made to [deployment manifests](../deploy).
-- Builds an image and pushes it to the registry
+## Configuring the Routes
 
-### CD
 
-The CD pipeline deploys the kubernetes manifests of the `taxi` app to the `dev` environment.
+## Public Image Repositories
+
+TODO
+
+## Quay Pull Secrets
+
+Visit the settings page for your Quay.io account "https://quay.io/user/<USERNAME>?tab=settings"
+
+You'll be prompted to authenticate, and then you'll get a screen that allows you download credential, pick the "Kubernetes Secret" on the left hand of the
+screen.
+
+On this screen, there is a link below "Step 1", to download your secret "Download <USERNAME>-secret.yml", download this file and place it in ~.
+
+## Quay Docker Config
+
+Visit the settings page for your Quay.io account "https://quay.io/user/<USERNAME>?tab=settings"
+
+You'll be prompted to authenticate, and then you'll get a screen that allows you download credential, pick the "Docker Configuraiton" on the left hand of the screen.
+
+On this screen, there is a link below "Step 1", to download your secret "Download <USERNAME>-auth.json", download this file and place it in ~.
+
+
+
+

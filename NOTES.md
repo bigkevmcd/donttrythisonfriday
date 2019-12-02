@@ -1,6 +1,6 @@
 # Pre-bootstrap
 
-## Get credentials for pushing images to Quay.io
+## Get credentials for pull images from Quay.io
 
  Visit the settings page for your Quay.io account "https://quay.io/user/<USERNAME>?tab=settings"
 
@@ -26,7 +26,7 @@ to
   name: pull-secret
  ```
 
-## Get configuration for pulling images from Quay.io
+## Get configuration for pushing images to Quay.io
 
 On the same screen, as the Quay.io pull credentials, click on the "Docker Configuration", and click to download the `<USERNAME>-auth.json` file.
 
