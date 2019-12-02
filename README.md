@@ -34,7 +34,7 @@ TODO
 
 ## Quay Pull Secrets
 
-Visit the settings page for your Quay.io account "https://quay.io/user/<USERNAME>?tab=settings"
+Visit the settings page for your Quay.io account `"https://quay.io/user/<USERNAME>?tab=settings"`
 
 You'll be prompted to authenticate, and then you'll get a screen that allows you download credential, pick the "Kubernetes Secret" on the left hand of the
 screen.
@@ -43,7 +43,7 @@ On this screen, there is a link below "Step 1", to download your secret "Downloa
 
 ## Quay Docker Config
 
-Visit the settings page for your Quay.io account "https://quay.io/user/<USERNAME>?tab=settings"
+Visit the settings page for your Quay.io account `"https://quay.io/user/<USERNAME>?tab=settings"`
 
 You'll be prompted to authenticate, and then you'll get a screen that allows you download credential, pick the "Docker Configuraiton" on the left hand of the screen.
 
