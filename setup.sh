@@ -16,26 +16,26 @@ fi
 
 ORGNAME=${seg[0]}
 APPNAME=${seg[1]}
-PULL_SECRET_NAME="${QUAYIO_USERNAME}-secret"
-DOCKER_CONFIG_NAME="${QUAYIO_USERNAME}-auth.json"
+PULL_SECRET_NAME="${QUAYIO_USERNAME}-pull-secret"
 IMAGE_REPO="quay.io/${QUAYIO_USERNAME}/${APPNAME}"
 GITHUB_REPO="${ORGNAME}/${APPNAME}"
 GITHUB_STAGE_REPO="${ORGNAME}/${APPNAME}-stage-config"
 
-FILENAME="$HOME/Downloads/${DOCKER_CONFIG_NAME}"
+FILENAME="$HOME/Downloads/${QUAYIO_USERNAME}-auth.json"
 if [ ! -f "${FILENAME}" ]; then
     echo "${FILENAME} does not exist"
     exit 1
 fi
 
-FILENAME="$HOME/Downloads/${PULL_SECRET_NAME}.yml"
+FILENAME="$HOME/Downloads/${QUAYIO_USERNAME}-quayio-secret.yml"
 if [ ! -f "${FILENAME}" ]; then
     echo "${FILENAME} does not exist"
     exit 1
 fi
 
 sed -i "s|REPLACE_IMAGE|${IMAGE_REPO}|g" deploy/**/*.yaml pipelines/**/*.yaml
-sed -i "s|PULL_SECRET_NAME|${PULL_SECRET_NAME}|g" pipelines/serviceaccount/serviceaccount.yaml pipelines/bootstrap.sh
+sed -i "s|PULL_SECRET_NAME|${PULL_SECRET_NAME}|g" pipelines/serviceaccount/serviceaccount.yaml
+sed -i "s|QUAYIO_USERNAME|${QUAYIO_USERNAME}|g" pipelines/bootstrap.sh
 sed -i "s|DOCKER_CONFIG_NAME|${DOCKER_CONFIG_NAME}|g" pipelines/bootstrap.sh
 sed -i "s|GITHUB_REPO|${GITHUB_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml
 sed -i "s|GITHUB_STAGE_REPO|${GITHUB_STAGE_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml
