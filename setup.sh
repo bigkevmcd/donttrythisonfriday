@@ -27,7 +27,7 @@ if [ ! -f "${FILENAME}" ]; then
     exit 1
 fi
 
-FILENAME="$HOME/Downloads/${QUAYIO_USERNAME}-quayio-secret.yml"
+FILENAME="$HOME/Downloads/${QUAYIO_USERNAME}-secret.yml"
 if [ ! -f "${FILENAME}" ]; then
     echo "${FILENAME} does not exist"
     exit 1
