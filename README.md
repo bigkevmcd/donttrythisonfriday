@@ -8,11 +8,12 @@ This is a repository for deploying the demo Tekton GitHub integration app.
  * A pull-secret for the Docker image repository, if your repository is public, you may not need this, and may need to edit the files, see [Quay pull secrets](#quay-pull-secrets) below for how to do this for Quay.io.
  * A Docker configuration to access your image host, if you're using Quay.io, see [Quay docker config](#quay-docker-config) for instructions.
  * A running OpenShift cluster that can be exposed to the internet - and you must be logged in at the command-line.
+ * Two GitHub repositories, a main repo e.g. `bigkevmcd/taxi` and a configuration repo `bigkevmcd/taxi-stage-config`, the `stage-config` name is derived automatically from the main repo.
 
 ## Updating the configuration
 
  ```shell
- $ ./setup.sh <QUAYIO_USERNAME>
+ $ ./setup.sh <QUAYIO_USERNAME> <main github repository>
  ```
 
 ## Bootstrapping the configuration

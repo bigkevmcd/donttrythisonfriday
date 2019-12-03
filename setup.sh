@@ -15,7 +15,7 @@ if [[ ${#seg[@]} -ne 2 ]]; then
 fi
 
 ORGNAME=${seg[0]}
-APPNAME=${seg[0]}
+APPNAME=${seg[1]}
 PULL_SECRET_NAME="${QUAYIO_USERNAME}-secret"
 DOCKER_CONFIG_NAME="${QUAYIO_USERNAME}-auth.json"
 IMAGE_REPO="quay.io/${QUAYIO_USERNAME}/${APPNAME}"
