@@ -8,7 +8,26 @@ spec:
       type: git
     - name: runtime-image
       type: image
+  params:
+    - name: REPO
+      type: string
+    - name: COMMIT_SHA
+      type: string
   tasks:
+    - name: create-pending-status
+      taskRef:
+        name: create-github-status
+      params:
+      - name: REPO
+        value: $(params.REPO)
+      - name: COMMIT_SHA
+        value: $(params.COMMIT_SHA)
+      - name: STATE
+        value: "pending"
+      - name: DESCRIPTION
+        value: "Starting dev-ci-pipeline"
+      - name: CONTEXT
+        value: "dev-ci-pipeline"
     - name: build-image
       taskRef:
         name: buildah-task

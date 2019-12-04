@@ -38,6 +38,11 @@ spec:
       serviceAccountName: demo-sa
       pipelineRef:
         name: dev-ci-pipeline
+      params:
+      - name: REPO
+        value: $(params.fullname)
+      - name: COMMIT_SHA
+        value: $(params.gitsha)
       resources:
         - name: source-repo
           resourceRef:
