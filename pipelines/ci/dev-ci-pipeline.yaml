@@ -31,6 +31,8 @@ spec:
     - name: build-image
       taskRef:
         name: buildah-task
+      runAfter:
+        - create-pending-status
       resources:
         inputs:
           - name: source
@@ -38,3 +40,19 @@ spec:
         outputs:
           - name: image
             resource: runtime-image
+    - name: create-success-status
+      taskRef:
+        name: create-github-status
+      runAfter:
+        - build-image
+      params:
+      - name: REPO
+        value: $(params.REPO)
+      - name: COMMIT_SHA
+        value: $(params.COMMIT_SHA)
+      - name: STATE
+        value: "success"
+      - name: DESCRIPTION
+        value: "Completed dev-ci-pipeline"
+      - name: CONTEXT
+        value: "dev-ci-pipeline"
