@@ -9,6 +9,7 @@ This is a repository for deploying the demo Tekton GitHub integration app.
  * A Docker configuration to access your image host, if you're using Quay.io, see [Quay docker config](#quay-docker-config) for instructions.
  * A running OpenShift cluster that can be exposed to the internet - and you must be logged in at the command-line.
  * Two GitHub repositories, a main repo e.g. `bigkevmcd/taxi` and a configuration repo `bigkevmcd/taxi-stage-config`, the `stage-config` name is derived automatically from the main repo.
+ * A Personal GitHub auth token, placed into a file called `$HOME/Downloads/token" see https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 
 ## Updating the configuration
 

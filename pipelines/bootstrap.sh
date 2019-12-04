@@ -4,8 +4,8 @@ oc apply -f https://github.com/tektoncd/triggers/releases/download/v0.1.0/releas
 oc new-project dev-environment
 oc new-project stage-environment
 oc new-project cicd-environment
-oc apply -f $HOME/Downloads/QUAYIO_USERNAME-secret.yml
-oc create secret generic regcred --from-file=.dockerconfigjson=$HOME/Downloads/QUAYIO_USERNAME-auth.json --type=kubernetes.io/dockerconfigjson
+oc apply -f $HOME/Downloads/kmcdermo-secret.yml
+oc create secret generic regcred --from-file=.dockerconfigjson=$HOME/Downloads/kmcdermo-auth.json --type=kubernetes.io/dockerconfigjson
 oc apply -f serviceaccount
 oc adm policy add-scc-to-user privileged -z demo-sa
 oc adm policy add-role-to-user edit -z demo-sa
@@ -17,3 +17,4 @@ oc apply -f ci
 oc apply -f cd
 oc apply -f eventlisteners
 oc apply -f routes
+oc create secret generic github-auth --from-file=$HOME/Downloads/token
