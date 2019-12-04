@@ -25,17 +25,6 @@ spec:
     - name: image
       type: image
   steps:
-  - name: start-status
-    image: quay.io/kmcdermo/github-tool:latest
-    workingDir: /workspace/source
-    env:
-    - name: GITHUB_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: github-auth
-          key: token
-    command: ["/root/github-tool"]
-    args: ["create-status", "--repo", "bigkevmcd/taxi", "--sha", "1cfc71512ccd27e3dd38119bdbde49a9a69e047b","--state","pending","--target-url","https://bigkevmcd.com/testing", "--description", "This is a test", "--context", "testing"]
   - name: build
     image: $(inputs.params.BUILDER_IMAGE)
     workingDir: /workspace/source
