@@ -17,3 +17,4 @@ oc apply -f ci
 oc apply -f cd
 oc apply -f eventlisteners
 oc apply -f routes
+oc create secret generic github-auth --from-file=$HOME/Downloads/token

@@ -29,7 +29,7 @@ spec:
       type: image
       params:
         - name: url
-          value: REPLACE_IMAGE:$(params.shortsha)
+          value: quay.io/kmcdermo/taxi:$(params.shortsha)
   - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
     metadata:
