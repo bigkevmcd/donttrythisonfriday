@@ -30,7 +30,7 @@ spec:
             resource: runtime-image
       params:
       - name: PATHTODEPLOYMENT
-        value: deploy/templates
+        value: deploy
       - name: YAMLPATHTOIMAGE
         value: "spec.template.spec.containers[0].image"
       - name: NAMESPACE
