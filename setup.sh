@@ -14,6 +14,12 @@ if [[ $# -ne 2 ]]; then
     exit 1
 fi
 
+if ! [ -x "$(command -v argocd)" ]; then
+  echo 'Error: argocd is not installed see https://argoproj.github.io/argo-cd/getting_started/#2-download-argo-cd-cli.' >&2
+  exit 1
+fi
+
+
 IFS='/' # assumes orgname/repo
 read -ra seg <<< "${GITHUB_REPO}"
 
@@ -45,4 +51,4 @@ sed $SED_OPTIONS "s|PULL_SECRET_NAME|${PULL_SECRET_NAME}|g" pipelines/serviceacc
 sed $SED_OPTIONS "s|QUAYIO_USERNAME|${QUAYIO_USERNAME}|g" pipelines/bootstrap.sh
 sed $SED_OPTIONS "s|DOCKER_CONFIG_NAME|${DOCKER_CONFIG_NAME}|g" pipelines/bootstrap.sh
 sed $SED_OPTIONS "s|GITHUB_REPO|${GITHUB_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml
-sed $SED_OPTIONS "s|GITHUB_STAGE_REPO|${GITHUB_STAGE_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml
+sed $SED_OPTIONS "s|GITHUB_STAGE_REPO|${GITHUB_STAGE_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml pipelines/argocd/argo-app.yaml
