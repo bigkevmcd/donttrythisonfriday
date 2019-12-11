@@ -11,7 +11,7 @@ spec:
         - name: Pullrequest-Action
           value: opened
         - name:  Pullrequest-Repo
-          value: GITHUB_REPO
+          value: bigkevmcd/taxi
         objectRef:
           kind: Service
           name: demo-interceptor
@@ -27,7 +27,7 @@ spec:
         - name: Push-Ref
           value: master
         - name:  Push-Repo
-          value: GITHUB_REPO
+          value: bigkevmcd/taxi
         objectRef:
           kind: Service
           name: demo-interceptor
@@ -43,7 +43,7 @@ spec:
         - name: Pullrequest-Action
           value: opened
         - name:  Pullrequest-Repo
-          value: GITHUB_STAGE_REPO
+          value: bigkevmcd/taxi-stage-config
         objectRef:
           kind: Service
           name: demo-interceptor
@@ -59,7 +59,7 @@ spec:
         - name: Push-Ref
           value: master
         - name:  Push-Repo
-          value: GITHUB_REPO
+          value: bigkevmcd/taxi
         objectRef:
           kind: Service
           name: demo-interceptor
