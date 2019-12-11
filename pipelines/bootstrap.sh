@@ -1,6 +1,8 @@
 #!/bin/sh
 oc apply -f https://github.com/tektoncd/pipeline/releases/download/v0.8.0/release.yaml
 oc apply -f https://github.com/tektoncd/triggers/releases/download/v0.1.0/release.yaml
+oc new-project argocd
+oc apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 oc new-project dev-environment
 oc new-project stage-environment
 oc new-project cicd-environment
@@ -17,4 +19,5 @@ oc apply -f ci
 oc apply -f cd
 oc apply -f eventlisteners
 oc apply -f routes
+oc apply -f argocd
 oc create secret generic github-auth --from-file=$HOME/Downloads/token
