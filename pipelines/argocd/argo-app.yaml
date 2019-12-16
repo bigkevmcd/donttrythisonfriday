@@ -8,7 +8,7 @@ spec:
     namespace: stage-environment
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/bigkevmcd/taxi-stage-config.git
+    repoURL: https://github.com/GITHUB_STAGE_REPO.git
     path: deploy
   syncPolicy:
     automated:
