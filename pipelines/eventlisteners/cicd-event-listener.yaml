@@ -9,9 +9,9 @@ spec:
       interceptor:
         header:
         - name: Pullrequest-Action
-          value: opened
+          value: opened,synchronize
         - name:  Pullrequest-Repo
-          value: bigkevmcd/taxi
+          value: GITHUB_REPO
         objectRef:
           kind: Service
           name: demo-interceptor
@@ -27,7 +27,7 @@ spec:
         - name: Push-Ref
           value: master
         - name:  Push-Repo
-          value: bigkevmcd/taxi
+          value: GITHUB_REPO
         objectRef:
           kind: Service
           name: demo-interceptor
@@ -41,9 +41,9 @@ spec:
       interceptor:
         header:
         - name: Pullrequest-Action
-          value: opened
+          value: opened,synchronize
         - name:  Pullrequest-Repo
-          value: bigkevmcd/taxi-stage-config
+          value: GITHUB_STAGE_REPO
         objectRef:
           kind: Service
           name: demo-interceptor
