@@ -20,6 +20,8 @@ spec:
           - name: image
             resource: runtime-image
     - name: deploy-image
+      runAfter:
+        - build-image
       taskRef:
         name: deploy-using-kubectl
       resources:
