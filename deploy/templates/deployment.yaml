@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: taxi
-        image: quay.io/kmcdermo/taxi
+        image: IMAGE_REPO
         imagePullPolicy: Always
         volumeMounts:
         - name: web-files
