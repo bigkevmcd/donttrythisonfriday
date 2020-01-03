@@ -26,8 +26,13 @@ This is a repository for deploying the demo Tekton GitHub integration app.
 At this point, a lot of YAML files and things will scroll down the screen, and
 it will take some time for new containers to be spawned.
 
-## Configuring the Routes
+## ArgoCD support
 
+If you want ArgoCD support, then you'll need to do further configuration.
+
+ ```shell
+ $ cd pipelines && ./argo_setup.sh
+ ```
 
 ## Public Image Repositories
 
@@ -49,7 +54,3 @@ Visit the settings page for your Quay.io account `"https://quay.io/user/<USERNAM
 You'll be prompted to authenticate, and then you'll get a screen that allows you download credential, pick the "Docker Configuraiton" on the left hand of the screen.
 
 On this screen, there is a link below "Step 1", to download your secret "Download <USERNAME>-auth.json", download this file and leave it in $HOME/Downloads.
-
-
-
-
