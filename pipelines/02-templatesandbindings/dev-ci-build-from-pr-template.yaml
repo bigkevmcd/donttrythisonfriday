@@ -15,21 +15,6 @@ spec:
     metadata:
       name: git-source-$(uid)
     spec:
-      type: git
-      params:
-      - name: revision
-        value: $(params.gitref)
-      - name: url
-        value: $(params.gitrepositoryurl)
-  - apiVersion: tekton.dev/v1alpha1
-    kind: PipelineResource
-    metadata:
-      name: image-$(uid)
-    spec:
-      type: image
-      params:
-        - name: url
-          value: REPLACE_IMAGE:$(params.gitref)-$(params.shortsha)
   - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
     metadata:
@@ -45,8 +30,18 @@ spec:
         value: $(params.gitsha)
       resources:
         - name: source-repo
-          resourceRef:
+          resourceSpec:
             name: git-source-$(uid)
+            type: git
+            params:
+            - name: revision
+              value: $(params.gitref)
+            - name: url
+              value: $(params.gitrepositoryurl)
         - name: runtime-image
-          resourceRef:
+          resourceSpec:
             name: image-$(uid)
+            type: image
+            params:
+              - name: url
+                value: REPLACE_IMAGE:$(params.gitref)-$(params.shortsha)

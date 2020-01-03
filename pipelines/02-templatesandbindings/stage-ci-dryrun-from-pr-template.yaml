@@ -11,17 +11,6 @@ spec:
     description: The git repository url
   resourcetemplates:
   - apiVersion: tekton.dev/v1alpha1
-    kind: PipelineResource
-    metadata:
-      name: git-source-$(uid)
-    spec:
-      type: git
-      params:
-      - name: revision
-        value: $(params.gitref)
-      - name: url
-        value: $(params.gitrepositoryurl)
-  - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
     metadata:
       name: stage-ci-pipeline-run-$(uid)
@@ -31,5 +20,10 @@ spec:
         name: stage-ci-pipeline
       resources:
         - name: source-repo
-          resourceRef:
-            name: git-source-$(uid)
+          resourceSpec:
+            type: git
+            params:
+            - name: revision
+              value: $(params.gitref)
+            - name: url
+              value: $(params.gitrepositoryurl)
