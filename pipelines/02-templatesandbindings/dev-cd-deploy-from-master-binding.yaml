@@ -6,8 +6,6 @@ spec:
   params:
   - name: gitref
     value: $(body.intercepted.ref)
-  - name: gitsha
-    value: $(body.head_commit.id)
   - name: shortsha
     value: $(body.intercepted.short_sha)
   - name: gitrepositoryurl

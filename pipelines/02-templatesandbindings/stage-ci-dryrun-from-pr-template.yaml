@@ -4,7 +4,7 @@ metadata:
   name: stage-ci-dryrun-from-pr-template
 spec:
   params:
-  - name: gitrevision
+  - name: gitref
     description: The git revision
     default: master
   - name: gitrepositoryurl

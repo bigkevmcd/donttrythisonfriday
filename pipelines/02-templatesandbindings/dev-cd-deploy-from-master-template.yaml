@@ -4,32 +4,14 @@ metadata:
   name: dev-cd-deploy-from-master-template
 spec:
   params:
-  - name: gitrevision
+  - name: gitref
     description: The git revision
     default: master
   - name: gitrepositoryurl
     description: The git repository url
+  - name: shortsha
+    description: A shortened version of the SHA for the commit to deploy
   resourcetemplates:
-  - apiVersion: tekton.dev/v1alpha1
-    kind: PipelineResource
-    metadata:
-      name: git-source-$(uid)
-    spec:
-      type: git
-      params:
-      - name: revision
-        value: $(params.gitref)
-      - name: url
-        value: $(params.gitrepositoryurl)
-  - apiVersion: tekton.dev/v1alpha1
-    kind: PipelineResource
-    metadata:
-      name: image-$(uid)
-    spec:
-      type: image
-      params:
-        - name: url
-          value: REPLACE_IMAGE:$(params.shortsha)
   - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
     metadata:
@@ -40,8 +22,16 @@ spec:
         name: dev-cd-pipeline
       resources:
         - name: source-repo
-          resourceRef:
-            name: git-source-$(uid)
+          resourceSpec:
+            type: git
+            params:
+            - name: revision
+              value: $(params.gitref)
+            - name: url
+              value: $(params.gitrepositoryurl)
         - name: runtime-image
-          resourceRef:
-            name: image-$(uid)
+          resourceSpec:
+            type: image
+            params:
+              - name: url
+                value: REPLACE_IMAGE:$(params.shortsha)

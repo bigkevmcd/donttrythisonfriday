@@ -4,11 +4,13 @@ metadata:
   name: dev-ci-build-from-pr-template
 spec:
   params:
-  - name: gitrevision
+  - name: gitref
     description: The git revision
     default: master
   - name: gitrepositoryurl
     description: The git repository url
+  - name: shortsha
+    description: A shortened version of the SHA for the commit to deploy
   resourcetemplates:
   - apiVersion: tekton.dev/v1alpha1
     kind: PipelineResource
@@ -31,7 +33,6 @@ spec:
       resources:
         - name: source-repo
           resourceSpec:
-            name: git-source-$(uid)
             type: git
             params:
             - name: revision
@@ -40,7 +41,6 @@ spec:
               value: $(params.gitrepositoryurl)
         - name: runtime-image
           resourceSpec:
-            name: image-$(uid)
             type: image
             params:
               - name: url
