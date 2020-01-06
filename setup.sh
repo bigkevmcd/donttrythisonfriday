@@ -15,10 +15,14 @@ if [[ $# -ne 2 ]]; then
 fi
 
 if ! [ -x "$(command -v argocd)" ]; then
-  echo 'Error: argocd is not installed see https://argoproj.github.io/argo-cd/getting_started/#2-download-argo-cd-cli.' >&2
+  echo 'Error: argocd is not installed see https://argoproj.github.io/argo-cd/getting_started/#2-download-argo-cd-cli' >&2
   exit 1
 fi
 
+if ! [ -x "$(command -v kubeseal)" ]; then
+  echo 'Error: kubeseal is not installed see https://github.com/bitnami-labs/sealed-secrets/releases' >&2
+  exit 1
+fi
 
 IFS='/' # assumes orgname/repo
 read -ra seg <<< "${GITHUB_REPO}"
