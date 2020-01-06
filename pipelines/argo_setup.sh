@@ -1,5 +1,7 @@
 
 #!/bin/sh
+oc new-project argocd
+oc apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 HOSTNAME=`oc get route argocd-api -n argocd --template '{{.spec.host}}'`
 PASSWORD=`oc get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2`
 EVENTLISTENER_URL=`oc get route github-webhook-event-listener -n cicd-environment --template '{{.spec.port.targetPort}}://{{.spec.host}}/'`

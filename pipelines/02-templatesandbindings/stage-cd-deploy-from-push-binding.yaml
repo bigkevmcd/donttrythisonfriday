@@ -1,14 +1,12 @@
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
-  name: dev-cd-deploy-from-master-binding
+  name: stage-cd-deploy-from-push-binding
 spec:
   params:
   - name: gitref
     value: $(body.intercepted.ref)
   - name: gitsha
-    value: $(body.head_commit.id)
-  - name: shortsha
-    value: $(body.intercepted.short_sha)
+    value: $(body.commits.0.id)
   - name: gitrepositoryurl
     value: $(body.repository.clone_url)
