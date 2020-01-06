@@ -1,5 +1,5 @@
 #!/bin/sh
-oc apply -f https://github.com/tektoncd/pipeline/releases/download/v0.8.0/release.yaml
+oc apply -f https://github.com/tektoncd/pipeline/releases/download/v0.9.2/release.yaml
 oc apply -f https://github.com/tektoncd/triggers/releases/download/v0.1.0/release.yaml
 oc new-project dev-environment
 oc new-project stage-environment
